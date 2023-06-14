@@ -27,8 +27,9 @@ def create(titleSpreadsheet, titleSheet):
 
     except HttpError as err:
         msg = 'không thể tạo form lúc này!\n' + err
+        print(msg)
 
-    return id, msg
+    return id
 
 
 def addSheet(id, titleSheet):
@@ -37,7 +38,7 @@ def addSheet(id, titleSheet):
             {
                 "addSheet": {
                     "properties": {
-                        "title": "abc"
+                        "title": titleSheet
                     }
                 }
             }
