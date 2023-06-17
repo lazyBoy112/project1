@@ -62,6 +62,18 @@ def getSheet(id, sheetName):
     return result
 
 
+def getColumnSheet(id, sheetName, column):
+    range = "'" + sheetName + "'" + "!" + column + "1:" + column + "100"
+    request = auth.sheet_service.spreadsheets().values().batchGet(
+        spreadsheetId=id,
+        ranges=range
+    )
+
+    result = request.execute()
+    if 'values' in result['valueRanges'][0]:
+        return result['valueRanges'][0]['values']
+    return result
+
 def permission(id):
     resource = {
         "role": "writer",
@@ -107,7 +119,7 @@ def getLink(id):
         request = auth.sheet_service.spreadsheets().get(spreadsheetId=id)
         response = request.execute()
     except HttpError as err:
-        msg = 'không thể tạo form lúc này!\n'
+        msg = 'link sheet bị lỗi!\n'
         print(err)
         return ''
     return response['spreadsheetUrl']

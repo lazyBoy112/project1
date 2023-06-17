@@ -4,8 +4,8 @@
     {
       "createItem": {
         "item": {
-          "title": "H\u1ecd v\u00e0 t\u00ean?",
-          "description": "VD: Nguy\u1ec5n V\u0103n A",
+          "title": "Họ và tên?",
+          "description": "VD: Nguyễn Văn A",
           "questionItem": {
             "question": {
               "questionId": "64d53e86",
@@ -40,7 +40,7 @@
     {
       "createItem": {
         "item": {
-          "title": "Nh\u00f3m?",
+          "title": "Nhóm?",
           "questionItem": {
             "question": {
               "questionId": "17a9d1d5",
@@ -48,7 +48,7 @@
                 "type": "DROP_DOWN",
                 "options": [
                   {
-                    "value": "T\u00f9y ch\u1ecdn 1"
+                    "value": "Tùy chọn 1"
                   }
                 ]
               }
@@ -63,7 +63,7 @@
     {
       "createItem": {
         "item": {
-          "title": "T\u00ean \u0111\u1ec1 t\u00e0i?",
+          "title": "Tên đề tài?",
           "questionItem": {
             "question": {
               "questionId": "59f73bcf",
@@ -71,7 +71,7 @@
                 "type": "DROP_DOWN",
                 "options": [
                   {
-                    "value": "T\u00f9y ch\u1ecdn 1"
+                    "value": "Tùy chọn 1"
                   }
                 ]
               }
@@ -86,7 +86,7 @@
     {
       "createItem": {
         "item": {
-          "title": "T\u00ean th\u00e0nh vi\u00ean th\u1ee9 nh\u1ea5t",
+          "title": "Tên thành viên thứ nhất",
           "questionItem": {
             "question": {
               "questionId": "5845a65c",
@@ -102,7 +102,7 @@
     {
       "createItem": {
         "item": {
-          "title": "\u0111i\u1ec3m s\u1ed1 \u0111\u00e1nh gi\u00e1 cho th\u00e0nh vi\u00ean th\u1ee9 nh\u1ea5t?",
+          "title": "điểm số đánh giá cho thành viên thứ nhất?",
           "questionItem": {
             "question": {
               "questionId": "6cc3af05",
@@ -121,7 +121,7 @@
     {
       "createItem": {
         "item": {
-          "title": "t\u00ean th\u00e0nh vi\u00ean th\u1ee9 2",
+          "title": "tên thành viên thứ 2",
           "questionItem": {
             "question": {
               "questionId": "0565e5ef",
@@ -137,7 +137,7 @@
     {
       "createItem": {
         "item": {
-          "title": "\u0110i\u1ec3m s\u1ed1 \u0111\u00e1nh gi\u00e1 cho th\u00e0nh vi\u00ean th\u1ee9 2",
+          "title": "Điểm số đánh giá cho thành viên thứ 2",
           "questionItem": {
             "question": {
               "questionId": "1fc7637d",
@@ -156,7 +156,7 @@
     {
       "createItem": {
         "item": {
-          "title": "T\u00ean th\u00e0nh vi\u00ean th\u1ee9 3( n\u1ebfu kh\u00f4ng c\u00f3 ghi kh\u00f4ng v\u00e0 ph\u1ea7n \u0111\u00e1nh gi\u00e1 \u0111i\u1ec3m th\u00ec \u0111\u1ec3 \u1edf 0)",
+          "title": "Tên thành viên thứ 3( nếu không có ghi không và phần đánh giá điểm thì để ở 0)",
           "questionItem": {
             "question": {
               "questionId": "7e0a8a23",
@@ -172,7 +172,7 @@
     {
       "createItem": {
         "item": {
-          "title": "\u0111i\u1ec3m s\u1ed1 \u0111\u00e1nh gi\u00e1 cho th\u00e0nh vi\u00ean th\u1ee9 3",
+          "title": "điểm số đánh giá cho thành viên thứ 3",
           "questionItem": {
             "question": {
               "questionId": "6e9ffd4c",
@@ -191,7 +191,7 @@
     {
       "createItem": {
         "item": {
-          "title": "T\u00ean th\u00e0nh vi\u00ean th\u1ee9 4( n\u1ebfu kh\u00f4ng c\u00f3 ghi kh\u00f4ng v\u00e0 ph\u1ea7n \u0111\u00e1nh gi\u00e1 \u0111i\u1ec3m th\u00ec \u0111\u1ec3 \u1edf 0)",
+          "title": "Tên thành viên thứ 4( nếu không có ghi không và phần đánh giá điểm thì để ở 0)",
           "questionItem": {
             "question": {
               "questionId": "33013606",
@@ -207,7 +207,7 @@
     {
       "createItem": {
         "item": {
-          "title": "\u0110i\u1ec3m s\u1ed1 \u0111\u00e1nh gi\u00e1 cho th\u00e0nh vi\u00ean th\u1ee9 4",
+          "title": "Điểm số đánh giá cho thành viên thứ 4",
           "questionItem": {
             "question": {
               "questionId": "7b602ab0",
@@ -226,7 +226,7 @@
     {
       "createItem": {
         "item": {
-          "title": "T\u00ean th\u00e0nh vi\u00ean th\u1ee9 4( n\u1ebfu kh\u00f4ng c\u00f3 ghi kh\u00f4ng v\u00e0 ph\u1ea7n \u0111\u00e1nh gi\u00e1 \u0111i\u1ec3m th\u00ec \u0111\u1ec3 \u1edf 0)",
+          "title": "Tên thành viên thứ 4( nếu không có ghi không và phần đánh giá điểm thì để ở 0)",
           "questionItem": {
             "question": {
               "questionId": "5fa0b366",
@@ -242,7 +242,7 @@
     {
       "createItem": {
         "item": {
-          "title": "\u0110i\u1ec3m s\u1ed1 \u0111\u00e1nh gi\u00e1 cho th\u00e0nh vi\u00ean th\u1ee9 4",
+          "title": "Điểm số đánh giá cho thành viên thứ 4",
           "questionItem": {
             "question": {
               "questionId": "3c3d37bd",
