@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Sheet</title>
+</head>
+<body>
+    <h1>Create a New Sheet</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Create Sheet">
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        .center-label {
+            position: fixed;
+            top: 5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+        <div class="center-label">
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <style>
+   
+</style>
+    <a href="{% url 'upload_excel' %}">Tải lên Excel </a>
+    <br><br>
+    <a href="{% url 'upload_excel_another' %}">Tải lên Excel khác</a>
+    <br><br>
+    <a href="{% url 'create_sheet' %}">Tạo trang đăng ký</a>
+    <br><br>
