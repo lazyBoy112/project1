@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500&display=swap');
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+  }
+  img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+body{
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+    
+}
+#header{
+    background-color: brown;
+}
+.container{
+    max-width: 1400px;
+    margin: 0px auto;
+}
+nav{
+    display: flex;
+}
+#logo{
+margin: 2px;
+}
+#logo img{
+    max-width: 63px;
+    height: auto;
+}
+#Tieu-de{
+    color: aliceblue;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 25px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    
+}
+#topnav {
+    margin: 0;
+    padding: 0;
+    background-color:rgb(255, 255, 255);
+    text-decoration: none;
+    box-shadow: 5px 5px 5px rgb(220,220,220);
+    
+}
+#tab{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: medium;
+    display: flex;
+    margin: 0px auto;
+    max-width: 1400px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+#tab li a{
+    color: black;
+    display: block;
+    text-decoration: none;
+    padding: 10px 30px;
+    
+} 
+#tab li:hover a{
+    color: white;
+    background-color: brown;
+}
+
+/*body*/
+
+.noidung{
+  margin: auto;
+  width: 100%;
+  padding: 70px 30px;
+
+  
+ 
+}
+
+.buttons{
+  justify-content: center;
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1.7fr;
+    grid-template-rows: 1.1fr 1.1fr 1.2fr;
+    grid-template-areas: 
+    "aa aa bb"
+    "cc cc bb";
+}
+
+  :root {
+    --q: yellow;
+    --dark: #16213e;
+    --light: #fff;
+    --upsv: brown;
+    --updt: brown;
+    --cn: brown;
+    --xoa: brown;
+    --gray: #cccccc;
+  }
+  
+  .notifications {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+  .notifications .column,
+  .toast {
+    display: flex;
+    align-items: center;
+  }
+  .notifications .toast {
+    width: 400px;
+    position: relative;
+    list-style: none;
+    background: var(--q);
+    border-radius: 50px;
+    margin-bottom: 10px;
+    padding: 20px;
+    justify-content: space-between;
+    overflow: hidden;
+    animation: show_toast 0.5s ease forwards;
+  }
+  .notifications .toast.remove {
+    animation: hide_toast 0.3s ease forwards;
+  }
+  @keyframes hide_toast {
+    0% {
+      transform: translateX(0%);
+    }
+    40% {
+      transform: translateX(0%);
+    }
+    80% {
+      transform: translateX(-5%);
+    }
+    100% {
+      transform: translateX(calc(100% + 20px));
+    }
+  }
+  @keyframes show_toast {
+    0% {
+      transform: translateX(100%);
+    }
+    40% {
+      transform: translateX(-5%);
+    }
+    80% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+  .toast::before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    animation: progress 5s linear forwards;
+  }
+  @keyframes progress {
+    100% {
+      width: 0%;
+    }
+  }
+  .toast.upsv::before,
+  .btn#upsv {
+    background-color: var(--upsv);
+  }
+  .toast.updt::before,
+  .btn#updt {
+    background-color: var(--updt);
+  }
+  .toast.cn::before,
+  .btn#cn {
+    background-color: var(--cn);
+  }
+  .toast.xoa::before,
+  .btn#xoa {
+    background-color: var(--xoa);
+  }
+  .toast .column i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  .toast.upsv .column i {
+    color: var(--upsv);
+  }
+  .toast.updt .column i {
+    color: var(--updt);
+  }
+  .toast.cn .column i {
+    color: var(--cn);
+  }
+  .toast.xoa .column i {
+    color: var(--xoa);
+  }
+  .toast .column .span {
+    font-size: 1.2rem;
+  }
+  .toast i:last-child {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--upsv);
+    transition: all 0.2s ease-in-out;
+  }
+  .toast i:last-child:hover {
+    color: var(--dark);
+  }
+  .buttons .btn {
+    max-width: 1000px;
+    background-color: brown;
+    margin: 30px 30px;
+    border: none;
+    outline: none;
+    padding: 20px 20px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: all 0.2s ease-in-out;
+    color: var(--light);
+    box-shadow: 1px 1px 5px brown;
+  }
+  .buttons .btn:hover {
+    
+    box-shadow: 10px 10px 5px brown;
+  }
+#upsv{
+ grid-area: aa;
+}
+#updt{
+  grid-area: cc;
+}
+#cn{
+  grid-area: bb;
+}
+ 

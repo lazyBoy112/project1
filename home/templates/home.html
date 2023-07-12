@@ -1,0 +1,33 @@
+<!DOCTYPE html>        
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="css/app1.css">
+    
+    <title>Trang chủ</title>
+</head>
+<body>
+    <div id="header">
+        <nav class="container">
+            <a href="" id="logo">
+                <img src="images/logo.svg.png" alt="back-khoa">
+            </a>
+            <ul id="Tieu-de">
+                <li>Phần mềm chấm chéo</li>
+                 <li>ĐẠI HỌC BÁCH KHOA HÀ NỘI - TRƯỜNG ĐIỆN - ĐIỆN TỬ</li>  
+            </ul>
+
+        </nav>
+    </div>
+    <div id="topnav">
+        <ul id="tab">
+            <li><a href="{% url 'home' %}">TRANG CHỦ</a></li>
+            <li><a href="{% url 'upload' %}">UPLOAD</a></li>
+            <li><a href="{% url 'download' %}">DOWLOAD</a></li>
+        </ul>
+      </div>
+    
+</body>
+</html>
