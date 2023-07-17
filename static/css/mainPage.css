@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500&display=swap');
+body{
+    background: no-repeat center fixed;
+    background-size: cover;
+    
+    margin: 0;
+    
+}
+#header{
+    background-color: brown;
+}
+.container{
+    max-width: 1400px;
+    margin: 0px auto;
+}
+nav{
+    display: flex;
+}
+#logo{
+margin: 2px;
+}
+#logo img{
+    max-width: 63px;
+    height: auto;
+}
+#Tieu-de{
+    color: aliceblue;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 25px 40px;
+    display: flex;
+    font-weight: 500;
+    font-size: large;
+flex-direction: column;
+justify-content: left;
+text-align: left;
+font-size: large;
+font-family: 'Montserrat', sans-serif;
+}
+#topnav {
+    margin: 0;
+    padding: 0;
+    background-color: yellow;
+    text-decoration: none;
+    box-shadow:  1px 1px 5px yellow;
+}
+#tab{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: medium;
+    display: flex;
+    margin: 0px auto;
+    max-width: 1400px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+#tab li a{
+    color: black;
+    display: block;
+    text-decoration: none;
+    padding: 10px 30px;
+    
+} 
+#tab li:hover a{
+    color: white;
+    background-color: brown;
+}

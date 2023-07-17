@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>        
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/logo.svg.png' %}">
+    <link rel="stylesheet" href="{% static 'css/pageForm.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Download</title>
+</head>
+<body style="background: url({% static 'images/bk.jpg' %})">
+    <div id="header">
+        <nav class="container">
+            <a href="" id="logo">
+                <img src="{% static 'images/logo.svg.png' %}" alt="back-khoa">
+            </a>
+            <ul id="Tieu-de">
+                <li>PHẦN MỀM CHẤM CHÉO</li>
+                 <li>ĐẠI HỌC BÁCH KHOA HÀ NỘI - TRƯỜNG ĐIỆN - ĐIỆN TỬ</li>  
+            </ul>
+
+        </nav>
+    </div>
+    <div id="topnav">
+        <ul id="tab">
+          <li><a href="{% url 'myapp:mainPage' %}">TRANG CHỦ</a></li>
+          <li><a href="{% url 'myapp:pageSheet' %}">TẠO DANH SÁCH ĐĂNG KÝ</a></li>
+          <li><a href="{% url 'myapp:pageForm' %}">TẠO FORM ĐÁNH GIÁ</a></li>
+        </ul>
+      </div>
+
+    <div class="noidung">
+        <ul class="notifications"></ul>
+          <div class="buttons">
+            <a href="{% url 'myapp:createForm' %}"><button class="btn" id="taoform">Tạo form</button></a>
+            <a href="{% url 'myapp:copyLinkForm' %}"><button class="btn" id="copy">Copy link form</button></a>
+            <a href="{% url 'myapp:downloadResult' %}"><button class="btn" id="tai">Tải xuống kết quả form</button></a>
+             
+         </div>
+    </div>
+    
+    <script src="{% static 'scripts/pageForm.js' %}"></script>
+    
+</body>
+</html>
