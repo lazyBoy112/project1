@@ -17,10 +17,13 @@ video {
   max-width: 100%;
 }
 body{
-    margin: 0;
-    background-color: rgb(255, 255, 255);
-    
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position:  center ;
+  background-size: cover;
+  margin: 0;
 }
+
 #header{
     background-color: brown;
 }
@@ -54,11 +57,11 @@ margin: 2px;
     
 }
 #topnav {
-    margin: 0;
-    padding: 0;
-    background-color:rgb(255, 255, 255);
-    text-decoration: none;
-    box-shadow: 5px 5px 5px rgb(220,220,220);
+  margin: 0;
+  padding: 0;
+  background-color: yellow;
+  text-decoration: none;
+  box-shadow:  1px 1px 5px yellow;
     
 }
 #tab{
@@ -90,29 +93,12 @@ margin: 2px;
   margin: auto;
   width: 100%;
   padding: 70px 30px;
-
-  
- 
 }
-
-.buttons{
-  justify-content: center;
-    display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1.7fr;
-    grid-template-rows: 1.1fr 1.1fr 1.2fr;
-    grid-template-areas: 
-    "aa aa bb"
-    "cc cc bb";
-}
-
   :root {
     --q: yellow;
     --dark: #16213e;
     --light: #fff;
-    --upsv: brown;
-    --updt: brown;
     --cn: brown;
-    --xoa: brown;
     --tao: brown;
     --gray: #cccccc;
   }
@@ -128,7 +114,7 @@ margin: 2px;
     align-items: center;
   }
   .notifications .toast {
-    width: 400px;
+    width: 300px;
     position: relative;
     list-style: none;
     background: var(--q);
@@ -184,21 +170,10 @@ margin: 2px;
       width: 0%;
     }
   }
-  .toast.upsv::before,
-  .btn#upsv {
-    background-color: var(--upsv);
-  }
-  .toast.updt::before,
-  .btn#updt {
-    background-color: var(--updt);
-  }
+  
   .toast.cn::before,
   .btn#cn {
     background-color: var(--cn);
-  }
-  .toast.xoa::before,
-  .btn#xoa {
-    background-color: var(--xoa);
   }
   .toast.tao::before,
   .btn#tao {
@@ -208,17 +183,8 @@ margin: 2px;
     font-size: 1.5rem;
     margin-right: 10px;
   }
-  .toast.upsv .column i {
-    color: var(--upsv);
-  }
-  .toast.updt .column i {
-    color: var(--updt);
-  }
   .toast.cn .column i {
     color: var(--cn);
-  }
-  .toast.xoa .column i {
-    color: var(--xoa);
   }
   .toast.tao .column i {
     color: var(--tao);
@@ -254,14 +220,59 @@ margin: 2px;
     
     box-shadow: 10px 10px 5px brown;
   }
-#upsv{
- grid-area: aa;
+.custom-file-input {
+  display: none;
 }
-#updt{
-  grid-area: cc;
+.custom-file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  background-color: brown;
+  margin: 30px 30px;
+  padding: 20px 20px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 10px;
+  color: var(--light);
+  box-shadow: 2spx 2px 5px brown;
+}
+.custom-file-input-label:hover{
+  box-shadow: 5px 5px 5px brown;
+}
+
+.custom-file-input-wrapper {
+  display: inline-block;
+  position: relative;
+}
+#fileNameDisplay1,#fileNameDisplay2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  background-color: white;
+  margin: 30px 30px;
+  padding: 15px 15px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 10px;
+  color: dark;
+  box-shadow: 2px 2px 5px brown;
+}
+.input{
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
 }
 #cn{
-  grid-area: bb;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 3;
 }
- 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  grid-gap: 10px; 
+}
 

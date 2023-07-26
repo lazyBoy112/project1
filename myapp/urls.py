@@ -5,6 +5,8 @@ app_name = 'myapp'
 
 urlpatterns = [
     path('', views.mainPage),
+    path('createNewProject', views.createNewProject, name='createNewProject'),
+    path('openProject', views.openProject, name='openProject'),
     path('upload', views.updateSheet, name='upload'),
     path('addSheet', views.addSheet, name='addSheet'),
     path('gotoSheet', views.gotoSheet, name='gotoSheet'),

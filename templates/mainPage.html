@@ -9,8 +9,7 @@
     
     <title>Trang chủ</title>
 </head>
-<body style="background: url({% static 'images/bk.jpg' %})">
-    <div id="header">
+<body style="background-image:linear-gradient(0,rgba(112, 128, 144,0.6), rgba(112, 128, 144,0.6)), url({% static 'images/bk.jpg' %})">    <div id="header">
         <nav class="container">
             <a href="" id="logo">
                 <img src="{% static 'images/logo.svg.png' %}" alt="back-khoa">
@@ -22,13 +21,28 @@
 
         </nav>
     </div>
-    <div id="topnav">
-        <ul id="tab">
-          <li><a href="{% url 'myapp:mainPage' %}">TRANG CHỦ</a></li>
-          <li><a href="{% url 'myapp:pageSheet' %}">TẠO DANH SÁCH ĐĂNG KÝ</a></li>
-          <li><a href="{% url 'myapp:pageForm' %}">TẠO FORM ĐÁNH GIÁ</a></li>
-        </ul>
-      </div>
     
+    <div class="noidung">
+      <ul class="notifications"></ul>
+      <div class="buttons">
+        <a href="{% url 'myapp:createNewProject' %}"><button class="btn" id="taoform">Tạo đánh giá mới</button></a>
+        <form action="{% url 'myapp:openProject' %}" method="POST" enctype="multipart/form-data" class="input">
+          <label for="fileInput1" class="custom-file-input-label">Mở đánh giá đã có :</label>
+          <div class="custom-file-input-wrapper">
+            <input type="file"
+                    id="fileInput1"
+                    class="custom-file-input"
+                    name="projectFile"
+                    onchange="displaySelectedFile('fileInput1', 'fileNameDisplay1')"
+                    accept=".json"
+                    >
+            <span id="fileNameDisplay1"> Chưa chọn tệp</span>
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn" id="cn">Mở đánh giá đã chọn</button>
+        </form>
+       </div>
+    </div>
+    <script src="{% static 'scripts/pageSheet.js' %}"></script>
 </body>
 </html>

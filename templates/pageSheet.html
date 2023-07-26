@@ -18,7 +18,7 @@
     />
     <title>Upload</title>
 </head>
-<body style="background: url({% static 'images/bk.jpg' %})">
+<body style="background-image:linear-gradient(0,rgba(112, 128, 144,0.6), rgba(112, 128, 144,0.6)), url({% static 'images/bk.jpg' %})">
     <div id="header">
         <nav class="container">
             <a href="" id="logo">
@@ -32,34 +32,53 @@
         </nav>
     </div>
     <div id="topnav">
-        <ul id="tab">
-          <li><a href="{% url 'myapp:mainPage' %}">TRANG CHỦ</a></li>
-          <li><a href="{% url 'myapp:pageSheet' %}">TẠO DANH SÁCH ĐĂNG KÝ</a></li>
-          <li><a href="{% url 'myapp:pageForm' %}">TẠO FORM ĐÁNH GIÁ</a></li>
-        </ul>
-      </div>
+      <ul id="tab">
+        <li><a href="{% url 'myapp:mainPage' %}">TRANG CHỦ</a></li>
+        <li><a href="{% url 'myapp:pageSheet' %}">TẠO DANH SÁCH ĐĂNG KÝ</a></li>
+        <li><a href="{% url 'myapp:pageForm' %}">TẠO FORM ĐÁNH GIÁ</a></li>
+      </ul>
+    </div>
 
     <div class="noidung">
       <ul class="notifications"></ul>
-        <div class="buttons">
-          <form action="{% url 'myapp:upload' %}" method="POST" enctype="multipart/form-data">
-              <input type="file" name="studentList" >
-              <input type="file" name="topicList" >
-              {% csrf_token %}
-              <button type="submit" class="btn" id="cn">cap nhat</button>
-          </form>
-           <!-- <button class="btn" id="upsv">Tải lên danh sách sinh viên</button> -->
-           <!--  <button class="btn" id="updt">Tải lên danh sách đề tài</button> -->
-            <!-- <button class="btn" id="cn">Cập nhật</button> -->
-           <!--  <button class="btn" id="tao">Tao danh sach dang ky de tai</button> -->
-           <!-- <button class="btn" >mo bang tinh da tao</button> -->
-           <!-- <button class="btn" id="xoa">Xóa</button> -->
-          <a href="{% url 'myapp:addSheet' %}" ><button class="btn" id="tao">Tao danh sach dang ky de tai</button></a>
-          <a href="{% url 'myapp:gotoSheet' %}"><button class="btn" >mo bang tinh da tao</button></a>
-         </div>
+      <div class="buttons">
+        <form action="{% url 'myapp:upload' %}" method="POST" enctype="multipart/form-data" class="input">
+          <label for="fileInput1"
+            class="custom-file-input-label"
+          >Chọn tệp danh sách sinh viên:</label>
+
+          <div class="custom-file-input-wrapper">
+            <input type="file"
+                  id="fileInput1"
+                  class="custom-file-input"
+                  name="studentList" 
+                  onchange="displaySelectedFile('fileInput1', 'fileNameDisplay1')"
+                  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                  >
+            <span id="fileNameDisplay1">Chưa chọn tệp</span>
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn" id="cn">cap nhat</button>
+          <label for="fileInput2" class="custom-file-input-label">Chọn tệp danh sách đề tài:</label>
+          <div class="custom-file-input-wrapper">
+            <input type="file"
+                    id="fileInput2"
+                    class="custom-file-input"
+                    name="topicList"
+                    onchange="displaySelectedFile('fileInput2', 'fileNameDisplay2')"
+                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                    >
+            <span id="fileNameDisplay2">Chưa chọn tệp</span>
+          </div>
+        </form>
+        <div class="grid-container">
+          <a href="{% url 'myapp:addSheet' %}"><button  class="btn" id="tao">Tạo trang</button></a>
+          <a href="{% url 'myapp:gotoSheet' %}"><button  class="btn" id="di">Đi đến sheet</button></a>
+        </div>
+       </div>
     </div>
-    
     <script src="{% static 'scripts/pageSheet.js' %}"></script>
-    
 </body>
 </html>
+
+

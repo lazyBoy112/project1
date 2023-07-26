@@ -1,8 +1,6 @@
 import base.auth as auth
-import json
-import os
 service = auth.script_service
-scriptId = 'AKfycbw5hOug2GV9UctYxqfclZPLgEnMhbGSkhaMkFvOjCNeijiFN1I5oM1AwCYj07FqdAeG0Q'
+scriptId = 'AKfycbwEKil2-jLUc1Gd1_5a_zt9W3mEMd_r4FwcyyPeYFyIyCAmfoWuJ4P7gKHAoiuVvg6McQ'
 
 
 def test():
@@ -22,12 +20,16 @@ def createSheet():
     return request['response']['result']
 
 
-def updateSheet(studenList, topicList):
-    localdata = getLocalData()
+def updateSheet(studenList, topicList, datafile):
+    localdata = datafile
     id = localdata['spreadsheetId']
     if not id:
         id = createSheet()
-        setSpreadSheetId(id)
+        localdata['spreadsheetId'] = id
+    if not checkSheetId(id):
+        id = createSheet()
+        localdata['spreadsheetId'] = id
+
     body1 = {
         'function': 'updateSheet1',
         'parameters': [
@@ -47,14 +49,16 @@ def updateSheet(studenList, topicList):
 
     request = service.scripts().run(scriptId=scriptId, body=body2)
     request = request.execute()
-    return
+    return localdata
 
 
-def addRegisterSheet():
-    localdata = getLocalData()
+def addRegisterSheet(datafile):
+    localdata = datafile
     id = localdata['spreadsheetId']
     if not id:
         return 'Trang tính không được tạo! Hãy cập nhật lại trang tính'
+    if not checkSheetId(id):
+        return 'Trang tính không tồn tại.\nHãy tạo trang tính mới'
     body = {
         'function': 'addRegisterSheet',
         'parameters': [
@@ -65,20 +69,22 @@ def addRegisterSheet():
     return ''
 
 
-def getLinkSheet():
-    localdata = getLocalData()
+def getLinkSheet(datafile):
+    localdata = datafile
     id = localdata['spreadsheetId']
     if not id:
         return [False, 'Trang tính không được tạo! Hãy cập nhật lại trang tính']
+    if not checkSheetId(id):
+        return [False, 'Trang tính không tồn tại.\nHãy tạo trang tính mới']
     return [True, 'https://docs.google.com/spreadsheets/d/' + id]
 
 
-def updateForm():
-    localdata = getLocalData();
+def updateForm(datafile):
+    localdata = datafile
     sheetId = localdata['spreadsheetId']
     formId = localdata['formId']
     if not sheetId:
-        return [False, ' Dữ liệu trên localdata bị mật! Hãy cập nhật lại danh sách đăng ký!']
+        return [localdata, ' Dữ liệu trống! Hãy cập nhật lại danh sách đăng ký!']
     body = {
         'function': 'updateForm',
         'parameters': [
@@ -91,29 +97,50 @@ def updateForm():
     print(response)
     result = response['response']['result']
     if not result[0]:
-        return [False, 'Sinh viên chưa đăng ký!']
+        return [localdata, 'Sinh viên chưa đăng ký!']
     formId = result[1]
-    setFormId(formId)
-    return [True, '']
+    localdata['formId'] = formId
+    return [localdata, '']
 
 
-def getFormLink():
-    id = getLocalData()
-    id = id['formId']
+def getFormLink(datafile):
+    localdata = datafile
+    id = localdata['formId']
     if not id:
-        return ''
-    return 'https://docs.google.com/forms/d/' + id + '/viewform'
+        return [False, 'Không có dữ liệu form.\nHãy tạo lại form mới!']
+    if not checkFormId(id):
+        return [False, 'Form không còn tồn tại.\nHãy tạo lại form mới!']
+    return [True, 'https://docs.google.com/forms/d/' + id + '/viewform']
 
-def getResultForm():
-    localdata = getLocalData()
+
+def getResponseForm(datafile):
+    localdata = datafile
     sheetId = localdata['spreadsheetId']
     if not sheetId:
-        return []
+        return [1]
     formId = localdata['formId']
     if not formId:
-        return []
+        return [1]
     body = {
-        'function': 'getResult',
+        'function': 'getResponseFromForm',
+        'parameters': [
+            formId,
+            sheetId
+        ]
+    }
+    request = service.scripts().run(scriptId=scriptId, body=body)
+    response = request.execute()
+    print(response)
+    result = response['response']['result']
+    return result
+
+
+def getAverageMark(datafile):
+    localdata = datafile
+    sheetId = localdata['spreadsheetId']
+    formId = localdata['formId']
+    body = {
+        'function': 'getAverageMark',
         'parameters': [
             formId,
             sheetId
@@ -123,47 +150,31 @@ def getResultForm():
     response = request.execute()
     # print(response)
     result = response['response']['result']
-    data = []
-    # data.append(['Nhóm', 'Tên sinh viên', 'Điểm trung bình'])
-    for i in range(len(result)):
-        data.append([result[i][0], result[i][1], result[i][-1]])
-    print(data)
-    return data
+    return result
 
 
-def getLocalData():
-    if not os.path.exists('base/data.json'):
-        createLocalData()
-    with open('base/data.json', 'r') as file:
-        data = json.load(file)
-    return data
+def checkFormId(id):
+    body = {
+        'function': 'checkFormId',
+        'parameters': [
+            id
+        ]
+    }
+    request = service.scripts().run(scriptId=scriptId, body=body)
+    response = request.execute()
+    return response
 
 
-def setSpreadSheetId(id):
-    with open('base/data.json', 'r') as file:
-        data = json.load(file)
-    data['spreadsheetId'] = id
-    file.close()
-    data = json.dumps(data)
-    with open('base/data.json', 'w') as file:
-        file.write(data)
-    file.close
+def checkSheetId(id):
+    body = {
+        'function': 'checkSheetId',
+        'parameters': [
+            id
+        ]
+    }
+    request = service.scripts().run(scriptId=scriptId, body=body)
+    response = request.execute()
+    return response
 
 
-def setFormId(id):
-    with open('base/data.json', 'r') as file:
-        data = json.load(file)
-    data['formId'] = id
-    file.close()
-    data = json.dumps(data)
-    with open('base/data.json', 'w') as file:
-        file.write(data)
-    file.close
-
-def createLocalData():
-    data = {"spreadsheetId": "", "formId": ""}
-    data = json.dumps(data)
-    with open('data.json', 'w') as file:
-        file.write(data)
-    file.close()
 
