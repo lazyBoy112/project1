@@ -7,43 +7,38 @@ from io import BytesIO
 import json
 
 
-def writeLocal(dfile):
-    data = json.dumps(dfile)
-    with open('base\\data.json', 'w') as file:
-        file.write(data)
-    file.close
-
-
-def readLocal():
-    with open('base\\data.json', 'r') as file:
-        data = json.load(file)
-        return data
-
-
 def createNewProject(request):
     datafile = {"spreadsheetId": "", "formId": ""}
-    writeLocal(datafile)
-    return render(request, 'pageSheet.html')
+    response = render(request, 'pageSheet.html')
+    response.set_cookie('spreadsheetId', datafile['spreadsheetId'])
+    response.set_cookie('formId', datafile['formId'])
+    return response
 
 
 def openProject(request):
     datafile = {}
+    response = render(request, 'pageSheet.html')
     if request.method == 'POST':
         projectFile = request.FILES.get('projectFile')
         if projectFile is None:
             return HttpResponse('Bạn chưa chọn file')
         datafile = json.load(projectFile)
-        writeLocal(datafile)
+        # writeLocal(request, datafile)
+        response.set_cookie('spreadsheetId', datafile['spreadsheetId'])
+        response.set_cookie('formId', datafile['formId'])
     print(datafile)
-    return render(request, 'pageSheet.html')
-
-
-def createNewFile(request):
-    return render(render, "")
+    return response
 
 
 def updateSheet(request):
-    datafile = readLocal()
+    # datafile = readLocal(request)
+    spreadsheetId = request.COOKIES.get('spreadsheetId', 1)
+    formId = request.COOKIES.get('formId', 1)
+    if (spreadsheetId == 1):
+        spreadsheetId = ''
+    if (formId == 1):
+        formId = ''
+    datafile = {'spreadsheetId': spreadsheetId, 'formId': formId}
     if request.method == 'POST':
         f_student = request.FILES.get('studentList')
         f_topic = request.FILES.get('topicList')
@@ -79,17 +74,26 @@ def updateSheet(request):
             d_topic[i] = d_topic[i].split(',')
 
         datafile = ascript.updateSheet(d_student, d_topic, datafile)
-        writeLocal(datafile)
+        # writeLocal(request, datafile)
 
         data = json.dumps(datafile)
         response = HttpResponse(data, content_type='application/json')
         response['Content-Disposition'] = 'attachment; filename=my_file.json'
+        response.set_cookie('spreadsheetId', datafile['spreadsheetId'])
+        response.set_cookie('formId', datafile['formId'])
         # return render(request, 'pageSheet.html')
         return response
 
 
 def addSheet(request):
-    datafile = readLocal()
+    # datafile = readLocal(request)
+    spreadsheetId = request.COOKIES.get('spreadsheetId', 1)
+    formId = request.COOKIES.get('formId', 1)
+    if (spreadsheetId == 1):
+        spreadsheetId = ''
+    if (formId == 1):
+        formId = ''
+    datafile = {'spreadsheetId': spreadsheetId, 'formId': formId}
     print(datafile)
     msg = ascript.addRegisterSheet(datafile)
     print(msg)
@@ -99,7 +103,14 @@ def addSheet(request):
 
 
 def gotoSheet(request):
-    datafile = readLocal()
+    # datafile = readLocal(request)
+    spreadsheetId = request.COOKIES.get('spreadsheetId', 1)
+    formId = request.COOKIES.get('formId', 1)
+    if (spreadsheetId == 1):
+        spreadsheetId = ''
+    if (formId == 1):
+        formId = ''
+    datafile = {'spreadsheetId': spreadsheetId, 'formId': formId}
     print(datafile)
     link = ascript.getLinkSheet(datafile)
     if not link[0]:
@@ -109,22 +120,38 @@ def gotoSheet(request):
 
 
 def createForm(request):
-    datafile = readLocal()
+    # datafile = readLocal(request)
+    spreadsheetId = request.COOKIES.get('spreadsheetId', 1)
+    formId = request.COOKIES.get('formId', 1)
+    if (spreadsheetId == 1):
+        spreadsheetId = ''
+    if (formId == 1):
+        formId = ''
+    datafile = {'spreadsheetId': spreadsheetId, 'formId': formId}
     print(datafile)
     msg = ascript.updateForm(datafile)
     if msg[1]:
         return HttpResponse(msg[1])
     datafile = msg[0]
-    writeLocal(datafile)
+    # writeLocal(request, datafile)
     data = json.dumps(datafile)
     response = HttpResponse(data, content_type='application/json')
     response['Content-Disposition'] = 'attachment; filename=my_file.json'
+    response.set_cookie('spreadsheetId', datafile['spreadsheetId'])
+    response.set_cookie('formId', datafile['formId'])
     # return render(request, 'pageForm.html')
     return response
 
 
 def copyLinkForm(request):
-    datafile = readLocal()
+    # datafile = readLocal(request)
+    spreadsheetId = request.COOKIES.get('spreadsheetId', 1)
+    formId = request.COOKIES.get('formId', 1)
+    if (spreadsheetId == 1):
+        spreadsheetId = ''
+    if (formId == 1):
+        formId = ''
+    datafile = {'spreadsheetId': spreadsheetId, 'formId': formId}
     print(datafile)
     link = ascript.getFormLink(datafile)
     if not link[0]:
@@ -134,7 +161,14 @@ def copyLinkForm(request):
 
 
 def downloadResult(request):
-    datafile = readLocal()
+    # datafile = readLocal(request)
+    spreadsheetId = request.COOKIES.get('spreadsheetId', 1)
+    formId = request.COOKIES.get('formId', 1)
+    if (spreadsheetId == 1):
+        spreadsheetId = ''
+    if (formId == 1):
+        formId = ''
+    datafile = {'spreadsheetId': spreadsheetId, 'formId': formId}
     print(datafile)
     result1 = ascript.getResponseForm(datafile)
     if result1[0] == 1:
@@ -188,12 +222,3 @@ def ssheet(request):
 
 def form(request):
     return render(request, 'pageForm.html')
-
-
-def testa(request):
-    if request.method == 'POST':
-        f_student = request.FILES.get('studentList')
-        print(f_student.get_path())
-
-    return render(request, 'mainPage.html')
-

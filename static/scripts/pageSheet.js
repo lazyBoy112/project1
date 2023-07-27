@@ -19,13 +19,13 @@ const toastDetails = {
     icon: "fa-check-circle",
     message: "đã cập nhật thành công !",
   },
-  xoa: {
-    icon: "fa-info-circle",
-    message: "Đã xóa thành công !",
-  },
+  // xoa: {
+  //   icon: "fa-info-circle",
+  //   message: "Đã xóa thành công !",
+  // },
   tao: {
     icon: "fa-info-circle",
-    message: "Đã tạo trang sheet mới!",
+    message: "Đã tạo trang danh sách đăng ký đề tài!",
   },
 };
 const handleCreateToast = (id) => {

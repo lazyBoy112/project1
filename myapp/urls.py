@@ -18,5 +18,5 @@ urlpatterns = [
     path('pageSheet', views.ssheet, name='pageSheet'),
     path('pageForm', views.form, name='pageForm'),
 
-    path('testa', views.testa, name='testa'),
+    # path('testa', views.testa, name='testa'),
 ]
