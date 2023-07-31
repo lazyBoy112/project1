@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-xqsmbvpu=fue=7gguaze&-jth@gb4qwe7@ywg@^a%i0ai(+0t@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lazyboy112.pythonanywhere.com']
 
 
 # Application definition
@@ -119,10 +119,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# comment this in pythonanywhere 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
+# uncomment this in pythonanywhere
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 

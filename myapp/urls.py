@@ -11,7 +11,7 @@ urlpatterns = [
     path('addSheet', views.addSheet, name='addSheet'),
     path('gotoSheet', views.gotoSheet, name='gotoSheet'),
     path('createForm', views.createForm, name='createForm'),
-    path('copyLinkForm', views.copyLinkForm, name='copyLinkForm'),
+    path('gotoForm', views.gotoForm, name='gotoForm'),
     path('downloadResult', views.downloadResult, name='downloadResult'),
 
     path('mainPage', views.mainPage, name='mainPage'),

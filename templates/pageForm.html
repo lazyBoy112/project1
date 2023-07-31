@@ -16,7 +16,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Download</title>
+    <title>Form đánh giá</title>
 </head>
 <body style="background-image:linear-gradient(0,rgba(112, 128, 144,0.6), rgba(112, 128, 144,0.6)), url({% static 'images/bk.jpg' %})">
     <div id="header">
@@ -42,9 +42,9 @@
     <div class="noidung">
         <ul class="notifications"></ul>
           <div class="buttons">
-            <a href="{% url 'myapp:createForm' %}"><button class="btn" id="taoform">Tạo form</button></a>
-            <a href="{% url 'myapp:copyLinkForm' %}"><button class="btn" id="copy">Copy link form</button></a>
-            <a href="{% url 'myapp:downloadResult' %}"><button class="btn" id="tai">Tải xuống kết quả form</button></a>
+            <a href="{% url 'myapp:createForm' %}"><button class="btn" id="taoform">Tạo form đánh giá chéo</button></a>
+            <a href="{% url 'myapp:gotoForm' %}"><button class="btn" id="copy">Xem form đánh giá đã tạo</button></a>
+            <a href="{% url 'myapp:downloadResult' %}"><button class="btn" id="tai">Tải xuống kết quả đánh giá</button></a>
              
          </div>
     </div>

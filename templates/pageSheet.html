@@ -16,7 +16,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Upload</title>
+    <title>Danh sách đăng ký</title>
 </head>
 <body style="background-image:linear-gradient(0,rgba(112, 128, 144,0.6), rgba(112, 128, 144,0.6)), url({% static 'images/bk.jpg' %})">
     <div id="header">
@@ -58,8 +58,8 @@
             <span id="fileNameDisplay1">Chưa chọn tệp</span>
           </div>
           {% csrf_token %}
-          <button type="submit" class="btn" id="cn">cap nhat</button>
-          <label for="fileInput2" class="custom-file-input-label">Chọn tệp danh sách đề tài:</label>
+          <button type="submit" class="btn" id="cn">Cập nhật thông tin</button>
+          <label for="fileInput2" class="custom-file-input-label">Chọn tệp danh sách đề tài</label>
           <div class="custom-file-input-wrapper">
             <input type="file"
                     id="fileInput2"
@@ -72,8 +72,8 @@
           </div>
         </form>
         <div class="grid-container">
-          <a href="{% url 'myapp:addSheet' %}"><button  class="btn" id="tao">Tạo trang</button></a>
-          <a href="{% url 'myapp:gotoSheet' %}"><button  class="btn" id="di">Đi đến sheet</button></a>
+          <a href="{% url 'myapp:addSheet' %}"><button  class="btn" id="tao">Tạo danh sách đăng ký bài tập lớn</button></a>
+          <a href="{% url 'myapp:gotoSheet' %}"><button  class="btn" id="di">Xem danh sách đăng ký</button></a>
         </div>
        </div>
     </div>
