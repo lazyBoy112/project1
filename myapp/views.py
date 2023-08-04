@@ -9,14 +9,17 @@ from io import BytesIO
 import json
 import pandas
 import os.path
+import datetime
 
 
 SCOPES = [
-    'https://www.googleapis.com/auth/drive',
-    'https://www.googleapis.com/auth/drive.file',
-    'https://www.googleapis.com/auth/script.projects'
+    'https://www.googleapis.com/auth/spreadsheets',
+      'https://www.googleapis.com/auth/drive',
+      'https://www.googleapis.com/auth/drive.file',                                                                                                                                                            
+      "https://www.googleapis.com/auth/forms",
+      'https://www.googleapis.com/auth/script.projects'
 ]
-scriptId = 'AKfycbwEKil2-jLUc1Gd1_5a_zt9W3mEMd_r4FwcyyPeYFyIyCAmfoWuJ4P7gKHAoiuVvg6McQ'
+scriptId = 'AKfycbz_2BDdtfcTyzXryc2qhQPO5kvRxAVjiPk8iK8fGTur-6ZdQiAuPXnUYxF3l3tlFDmDFg'
 
 
 def service():
@@ -265,7 +268,11 @@ def updateSheet(request):
         tmp = tmp.fillna('')
         d_student = tmp.values.tolist()
         h_student = tmp.columns.tolist()
+        for i in range(len(d_student)):
+            if isinstance(d_student[i][6], datetime.date):
+                d_student[i][6] = d_student[i][6].strftime('%d/%m/%Y')
         d_student.insert(0, h_student)
+        print(d_student)
         for i in range(len(d_student)):
             if not i:
                 d_student[i].insert(6, 'Nhóm')
@@ -277,7 +284,7 @@ def updateSheet(request):
         d_topic = tmp.values.tolist()
         h_topic = tmp.columns.tolist()
         d_topic.insert(0, h_topic)
-
+        print(d_topic)
         datafile = getUpdateSheet(d_student, d_topic, datafile)
 
         data = json.dumps(datafile)
@@ -399,7 +406,7 @@ def downloadResult(request):
         df1.to_excel(writer, sheet_name='Phản hồi', index=False)
         df2.to_excel(writer, sheet_name='Điểm trung bình', index=False)
         writer._save()
-        filename = 'test'
+        filename = 'KetquaDanhgia'
         content_type = 'application/vnd.ms-excel'
         response = HttpResponse(b.getvalue(), content_type=content_type)
         response['Content-Disposition'] = 'attachment; filename="' + filename + '.xlsx"'
