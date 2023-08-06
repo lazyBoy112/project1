@@ -394,7 +394,7 @@ def downloadResult(request):
 
     result2 = getAverageMark(datafile)
     if not result2:
-        df2 = [[]]
+        df2 = pandas.DataFrame([[]])
     else:
         column2 = ['Nhóm', 'Tên', 'Điểm trung bình']
         df2 = pandas.DataFrame(result2, columns=column2)
